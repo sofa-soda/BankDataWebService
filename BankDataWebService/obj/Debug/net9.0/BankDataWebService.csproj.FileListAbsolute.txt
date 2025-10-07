@@ -360,3 +360,4 @@ D:\01-DC\Assignment02A\BankDataWebService\BankDataWebService\obj\Debug\net9.0\re
 D:\01-DC\Assignment02A\BankDataWebService\BankDataWebService\obj\Debug\net9.0\BankDataWebService.pdb
 D:\01-DC\Assignment02A\BankDataWebService\BankDataWebService\obj\Debug\net9.0\BankDataWebService.genruntimeconfig.cache
 D:\01-DC\Assignment02A\BankDataWebService\BankDataWebService\obj\Debug\net9.0\ref\BankDataWebService.dll
+D:\01-DC\Assignment02A\BankDataWebService\BankDataWebService\obj\Debug\net9.0\BankDataWebService.sourcelink.json

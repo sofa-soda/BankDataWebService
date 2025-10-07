@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BankDataWebService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56aea41b7625f67840ca19f5bf872666e9e63dff")]
 [assembly: System.Reflection.AssemblyProductAttribute("BankDataWebService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BankDataWebService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

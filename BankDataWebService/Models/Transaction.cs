@@ -9,17 +9,20 @@ namespace BankDataWebService.Models
         public uint TransactionId { get; set; }
         [Required]
         public decimal Amount { get; set; }
-        public uint? SendingAccountNo { get; set; } // null for deposit
-        public uint? ReceivingAccountNo { get; set; } // null for withdrawal
+        [Required]
+        public uint AccountNo { get; set; }
+        public uint? TargetAccountNo { get; set; } // null for withdrawals and deposits
         [Required]
         public string TimeStamp { get; set; } = null!;
         public string? Description { get; set; }
+        [Required]
+        public bool IsLegal { get; set; } = true;
 
-        [ForeignKey("SendingAccountNo")]
-        public Account? SendingAccount { get; set; }
+        [Required, ForeignKey("AccountNo")]
+        public Account Account { get; set; } = null!;
 
-        [ForeignKey("ReceivingAccountNo")]
-        public Account? ReceivingAccount { get; set; }
+        [ForeignKey("TargetAccountNo")]
+        public Account? TargetAccount { get; set; }
     }
 
     // Try out this code so that sending and receiving can't both be null
