@@ -1,0 +1,25 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BankDataWebService.Models
+{
+    public class User
+    {
+        [Required, Key]
+        public uint UserId { get; set; }
+        [Required]
+        public required string FirstName { get; set; }
+        public string? LastName { get; set; }
+        [Required, EmailAddress]
+        public required string Email { get; set; }
+        [Required]
+        public required string Password { get; set; }
+        [Required, Phone]
+        public int? PhoneNo { get; set; }
+        public byte[]? ProfilePicture { get; set; }
+        public string? StreetAddress { get; set; }
+        public string? Suburb { get; set; }
+        public string? State { get; set; }
+        public int? PostalCode { get; set; }
+        public string? Country { get; set; }
+    }
+}
