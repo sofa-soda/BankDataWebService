@@ -21,47 +21,6 @@ namespace BankDataWebService.Controllers
             _context = context;
         }
 
-        // check if exception handling required to check if accounts exist -------------------------
-        public async Task<IActionResult> ProcessTransaction(Transaction transaction)
-        {
-            await using var databaseTransaction = await _context.Database.BeginTransactionAsync();
-            try
-            {
-                if (transaction.Amount <= 0 &&  transaction.TargetAccountNo != null)
-                {
-                    // invalid transaction
-                }
-                // checkpoint to revert back to if the transaction is illegal
-                await databaseTransaction.CreateSavepointAsync("BeforeTransaction");
-
-                // deposit 
-                if (transaction.Amount >= 0 && transaction.TargetAccountNo == null) 
-                {
-
-                }
-                // withdrawal
-                else if (transaction.Amount < 0 && transaction.TargetAccountNo == null) 
-                {
-
-                }
-                // transfer from the account to the target account
-                else if (transaction.TargetAccountNo != null)
-                {
-                    
-                }
-                
-                _context.Transactions.Add(transaction);
-            } 
-            catch (Exception ex)
-            {
-                // If a failure occurred, rollback to the savepoint
-                await databaseTransaction.RollbackToSavepointAsync("BeforeTransaction");
-
-                // notify user that transaction is illegal
-                // save the transaction - don't affect accounts, set IsLegal to false
-            }
-        }
-
         // GET: api/Transactions
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Transaction>>> GetTransactions()
@@ -69,79 +28,76 @@ namespace BankDataWebService.Controllers
             return await _context.Transactions.ToListAsync();
         }
 
-        // GET: api/Transactions/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Transaction>> GetTransaction(uint id)
+        // GET: api/Transactions/4
+        [HttpGet("{accountNo}")]
+        public async Task<ActionResult<List<Transaction>>> GetTransactionFromAccountNo(uint accountNo)
         {
-            var transaction = await _context.Transactions.FindAsync(id);
-
-            if (transaction == null)
+            // selects all transactions that have matching accountNo and puts into a list
+            List<Transaction> transactions = await _context.Transactions
+                        .Where(t => t.AccountNo == accountNo)
+                        .OrderByDescending(t => t.TransactionId)
+                        .ToListAsync();
+            if (transactions == null)
             {
                 return NotFound();
             }
-
-            return transaction;
+            return transactions;
         }
-
-        // PUT: api/Transactions/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutTransaction(uint id, Transaction transaction)
-        {
-            if (id != transaction.TransactionId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(transaction).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TransactionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
+        
+        // check if exception handling required to check if accounts exist -------------------------
         // POST: api/Transactions
         [HttpPost]
         public async Task<ActionResult<Transaction>> PostTransaction(Transaction transaction)
         {
-            _context.Transactions.Add(transaction);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTransaction", new { id = transaction.TransactionId }, transaction);
-        }
-
-        // DELETE: api/Transactions/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTransaction(uint id)
-        {
-            var transaction = await _context.Transactions.FindAsync(id);
-            if (transaction == null)
+            try
             {
-                return NotFound();
+                // retrieve account
+                Account? account = await _context.Accounts
+                        .FirstOrDefaultAsync(a => a.AccountNo == transaction.AccountNo)
+                        ?? throw new Exception("account does't exist");
+
+                if (transaction.TargetAccountNo != null)
+                {
+                    if (transaction.Amount <= 0)
+                        throw new Exception("Transfer amount must be positive");
+
+                    // retrieve target account
+                    Account? targetAccount = await _context.Accounts
+                        .FirstOrDefaultAsync(a => a.AccountNo == transaction.TargetAccountNo)
+                        ?? throw new Exception("Target account does't exist");
+
+                    if (account.Balance < transaction.Amount)
+                        throw new Exception("Insufficient funds");
+
+                    // transfer
+                    account.Balance -= transaction.Amount;
+                    targetAccount.Balance += transaction.Amount;
+                }
+                else if (transaction.TargetAccountNo == null)
+                {
+                    if (transaction.Amount >= 0) // deposit
+                    {
+                        account.Balance += transaction.Amount;
+                    }
+                    else if (transaction.Amount < 0) // withdrawal
+                    {
+                        if (account.Balance < Math.Abs(transaction.Amount))
+                            throw new Exception("Insufficient funds");
+
+                        account.Balance += transaction.Amount;
+                    }
+                }
+                _context.Transactions.Add(transaction);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetTransaction", new { id = transaction.TransactionId }, transaction);
             }
-
-            _context.Transactions.Remove(transaction);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool TransactionExists(uint id)
-        {
-            return _context.Transactions.Any(e => e.TransactionId == id);
+            catch (Exception ex)
+            {
+                transaction.IsLegal = false;
+                _context.Transactions.Add(transaction);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction("GetTransaction", new { id = transaction.TransactionId }, transaction);
+            }
         }
     }
 }

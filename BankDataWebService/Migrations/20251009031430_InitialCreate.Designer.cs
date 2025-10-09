@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BankDataWebService.Migrations
 {
     [DbContext(typeof(DBManager))]
-    [Migration("20251007010938_InitialCreate")]
+    [Migration("20251009031430_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -35,12 +35,13 @@ namespace BankDataWebService.Migrations
                     b.Property<uint>("Pin")
                         .HasColumnType("INTEGER");
 
-                    b.Property<uint>("UserId")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("AccountNo");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserName");
 
                     b.ToTable("Accounts");
 
@@ -51,7 +52,7 @@ namespace BankDataWebService.Migrations
                             AccountType = "savings",
                             Balance = 0m,
                             Pin = 3423u,
-                            UserId = 1u
+                            UserName = "sophia3423"
                         },
                         new
                         {
@@ -59,7 +60,7 @@ namespace BankDataWebService.Migrations
                             AccountType = "cheque",
                             Balance = 0m,
                             Pin = 4353u,
-                            UserId = 2u
+                            UserName = "john4534"
                         });
                 });
 
@@ -69,27 +70,22 @@ namespace BankDataWebService.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<uint>("AccountNo")
+                        .HasColumnType("INTEGER");
+
                     b.Property<decimal>("Amount")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<uint?>("ReceivingAccountNo")
+                    b.Property<bool>("IsLegal")
                         .HasColumnType("INTEGER");
 
-                    b.Property<uint?>("SendingAccountNo")
+                    b.Property<uint?>("TargetAccountNo")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("TimeStamp")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.HasKey("TransactionId");
-
-                    b.HasIndex("ReceivingAccountNo");
-
-                    b.HasIndex("SendingAccountNo");
 
                     b.ToTable("Transactions");
 
@@ -97,24 +93,23 @@ namespace BankDataWebService.Migrations
                         new
                         {
                             TransactionId = 1u,
+                            AccountNo = 1u,
                             Amount = 134m,
-                            SendingAccountNo = 1u,
-                            TimeStamp = "2024-12-02 16:43:03"
+                            IsLegal = true
                         },
                         new
                         {
                             TransactionId = 2u,
+                            AccountNo = 2u,
                             Amount = 293m,
-                            SendingAccountNo = 2u,
-                            TimeStamp = "2025-01-03 18:52:17"
+                            IsLegal = true
                         });
                 });
 
             modelBuilder.Entity("BankDataWebService.Models.User", b =>
                 {
-                    b.Property<uint>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UserName")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Country")
                         .HasColumnType("TEXT");
@@ -134,7 +129,7 @@ namespace BankDataWebService.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("PhoneNo")
+                    b.Property<int?>("PhoneNo")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("PostalCode")
@@ -152,7 +147,7 @@ namespace BankDataWebService.Migrations
                     b.Property<string>("Suburb")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("UserId");
+                    b.HasKey("UserName");
 
                     b.HasIndex("Email")
                         .IsUnique();
@@ -165,7 +160,7 @@ namespace BankDataWebService.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = 1u,
+                            UserName = "sophia3423",
                             Email = "sophia3423@gmail.com",
                             FirstName = "Sophia",
                             LastName = "Matassa",
@@ -174,7 +169,7 @@ namespace BankDataWebService.Migrations
                         },
                         new
                         {
-                            UserId = 2u,
+                            UserName = "john4534",
                             Email = "john4534@gmail.com",
                             FirstName = "John",
                             LastName = "Small",
@@ -187,26 +182,11 @@ namespace BankDataWebService.Migrations
                 {
                     b.HasOne("BankDataWebService.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserName")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("BankDataWebService.Models.Transaction", b =>
-                {
-                    b.HasOne("BankDataWebService.Models.Account", "ReceivingAccount")
-                        .WithMany()
-                        .HasForeignKey("ReceivingAccountNo");
-
-                    b.HasOne("BankDataWebService.Models.Account", "SendingAccount")
-                        .WithMany()
-                        .HasForeignKey("SendingAccountNo");
-
-                    b.Navigation("ReceivingAccount");
-
-                    b.Navigation("SendingAccount");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BankDataWebService.Data;
+using BankDataWebService.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using BankDataWebService.Data;
-using BankDataWebService.Models;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BankDataWebService.Controllers
 {
@@ -28,12 +29,25 @@ namespace BankDataWebService.Controllers
             return await _context.Users.ToListAsync();
         }
 
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(uint id)
+        // GET: api/Users/email/5
+        [HttpGet("email/{email}")]
+        public async Task<ActionResult<User>> GetUserByEmail(string email)
         {
-            var user = await _context.Users.FindAsync(id);
+            User? user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null)
+            {
+                return NotFound();
+            }
 
+            return user;
+        }
+
+        // GET: api/Users/email/5
+        [HttpGet("username/{username}")]
+        public async Task<ActionResult<User>> GetUserByUserName(string username)
+        {
+            User? user = await _context.Users
+                       .FirstOrDefaultAsync(u => u.UserName == username);
             if (user == null)
             {
                 return NotFound();
@@ -43,10 +57,10 @@ namespace BankDataWebService.Controllers
         }
 
         // PUT: api/Users/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(uint id, User user)
+        [HttpPut("{username}")]
+        public async Task<IActionResult> PutUser(string username, User user)
         {
-            if (id != user.UserId)
+            if (username != user.UserName)
             {
                 return BadRequest();
             }
@@ -59,7 +73,8 @@ namespace BankDataWebService.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                
+                if (!UserExists(username))
                 {
                     return NotFound();
                 }
@@ -68,7 +83,6 @@ namespace BankDataWebService.Controllers
                     throw;
                 }
             }
-
             return NoContent();
         }
 
@@ -79,14 +93,14 @@ namespace BankDataWebService.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.UserId }, user);
+            return CreatedAtAction("GetUserByUserName", new { username = user.UserName }, user);
         }
 
         // DELETE: api/Users/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(uint id)
+        [HttpDelete("{username}")]
+        public async Task<IActionResult> DeleteUser(string username)
         {
-            var user = await _context.Users.FindAsync(id);
+            User? user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);
             if (user == null)
             {
                 return NotFound();
@@ -98,9 +112,9 @@ namespace BankDataWebService.Controllers
             return NoContent();
         }
 
-        private bool UserExists(uint id)
+        private bool UserExists(string username)
         {
-            return _context.Users.Any(e => e.UserId == id);
+            return _context.Users.Any(e => e.UserName == username);
         }
     }
 }

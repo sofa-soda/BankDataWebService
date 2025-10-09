@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "D:\\01-DC\\Assignment02A\\BankDataWebService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankdatawebservice\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|solutionrelative:bankdatawebservice\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankdatawebservice\\controllers\\transactionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|solutionrelative:bankdatawebservice\\controllers\\transactionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankdatawebservice\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|solutionrelative:bankdatawebservice\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251009033040_FixForeignKeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankDataWebService\\Migrations\\20251009033040_FixForeignKeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankdatawebservice\\data\\dbmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,20 +19,36 @@
       "RelativeMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|solutionrelative:bankdatawebservice\\models\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankdatawebservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|solutionrelative:bankdatawebservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankdatawebservice\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|solutionrelative:bankdatawebservice\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankdatawebservice\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|solutionrelative:bankdatawebservice\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankdatawebservice\\migrations\\20251007010938_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|solutionrelative:bankdatawebservice\\migrations\\20251007010938_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankdatawebservice\\controllers\\transactionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|solutionrelative:bankdatawebservice\\controllers\\transactionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251009031430_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankDataWebService\\Migrations\\20251009031430_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankdatawebservice\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|solutionrelative:bankdatawebservice\\controllers\\accountscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251007115728_AddRequiredForeignKeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankDataWebService\\Migrations\\20251007115728_AddRequiredForeignKeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankdatawebservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0BBE510F-B019-4352-A72F-C748960A4804}|BankDataWebService\\BankDataWebService.csproj|solutionrelative:bankdatawebservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -59,81 +67,136 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AccountsController.cs",
-              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Controllers\\AccountsController.cs",
-              "RelativeDocumentMoniker": "BankDataWebService\\Controllers\\AccountsController.cs",
-              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Controllers\\AccountsController.cs",
-              "RelativeToolTip": "BankDataWebService\\Controllers\\AccountsController.cs",
+              "Title": "20251009033040_FixForeignKeys.cs",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251009033040_FixForeignKeys.cs",
+              "RelativeDocumentMoniker": "BankDataWebService\\Migrations\\20251009033040_FixForeignKeys.cs",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251009033040_FixForeignKeys.cs",
+              "RelativeToolTip": "BankDataWebService\\Migrations\\20251009033040_FixForeignKeys.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T01:32:08.322Z",
+              "WhenOpened": "2025-10-09T03:30:40.781Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
+              "Title": "20251009031430_InitialCreate.cs",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251009031430_InitialCreate.cs",
+              "RelativeDocumentMoniker": "BankDataWebService\\Migrations\\20251009031430_InitialCreate.cs",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251009031430_InitialCreate.cs",
+              "RelativeToolTip": "BankDataWebService\\Migrations\\20251009031430_InitialCreate.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:14:30.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "TransactionsController.cs",
               "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Controllers\\TransactionsController.cs",
               "RelativeDocumentMoniker": "BankDataWebService\\Controllers\\TransactionsController.cs",
               "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Controllers\\TransactionsController.cs",
               "RelativeToolTip": "BankDataWebService\\Controllers\\TransactionsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAxwF4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-07T01:31:29.331Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "UsersController.cs",
               "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Controllers\\UsersController.cs",
               "RelativeDocumentMoniker": "BankDataWebService\\Controllers\\UsersController.cs",
               "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Controllers\\UsersController.cs",
               "RelativeToolTip": "BankDataWebService\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAG4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-07T01:13:17.283Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "20251007010938_InitialCreate.cs",
-              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251007010938_InitialCreate.cs",
-              "RelativeDocumentMoniker": "BankDataWebService\\Migrations\\20251007010938_InitialCreate.cs",
-              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251007010938_InitialCreate.cs",
-              "RelativeToolTip": "BankDataWebService\\Migrations\\20251007010938_InitialCreate.cs",
-              "ViewState": "AgIAAH8AAAAAAAAAAAAgwGMAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T01:09:38.154Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "20251007010215_InitialCreate.cs",
-              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs",
-              "RelativeDocumentMoniker": "BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs",
-              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs",
-              "RelativeToolTip": "BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T01:02:15.627Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "DBManager.cs",
               "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Data\\DBManager.cs",
               "RelativeDocumentMoniker": "BankDataWebService\\Data\\DBManager.cs",
               "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Data\\DBManager.cs",
               "RelativeToolTip": "BankDataWebService\\Data\\DBManager.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAuwGcAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCMAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-07T00:56:58.692Z"
+              "WhenOpened": "2025-10-07T00:56:58.692Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
+              "Title": "Account.cs",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\Account.cs",
+              "RelativeDocumentMoniker": "BankDataWebService\\Models\\Account.cs",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\Account.cs",
+              "RelativeToolTip": "BankDataWebService\\Models\\Account.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T06:46:51.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\User.cs",
+              "RelativeDocumentMoniker": "BankDataWebService\\Models\\User.cs",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\User.cs",
+              "RelativeToolTip": "BankDataWebService\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T07:55:14.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\Transaction.cs",
+              "RelativeDocumentMoniker": "BankDataWebService\\Models\\Transaction.cs",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\Transaction.cs",
+              "RelativeToolTip": "BankDataWebService\\Models\\Transaction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T06:47:15.347Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "20251007115728_AddRequiredForeignKeys.cs",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251007115728_AddRequiredForeignKeys.cs",
+              "RelativeDocumentMoniker": "BankDataWebService\\Migrations\\20251007115728_AddRequiredForeignKeys.cs",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251007115728_AddRequiredForeignKeys.cs",
+              "RelativeToolTip": "BankDataWebService\\Migrations\\20251007115728_AddRequiredForeignKeys.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T11:57:28.219Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AccountsController.cs",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Controllers\\AccountsController.cs",
+              "RelativeDocumentMoniker": "BankDataWebService\\Controllers\\AccountsController.cs",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Controllers\\AccountsController.cs",
+              "RelativeToolTip": "BankDataWebService\\Controllers\\AccountsController.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAIwGwAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-07T01:32:08.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Program.cs",
               "RelativeDocumentMoniker": "BankDataWebService\\Program.cs",
@@ -145,39 +208,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "User.cs",
-              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\User.cs",
-              "RelativeDocumentMoniker": "BankDataWebService\\Models\\User.cs",
-              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\User.cs",
-              "RelativeToolTip": "BankDataWebService\\Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAATAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "20251007010215_InitialCreate.cs",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs",
+              "RelativeDocumentMoniker": "BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs",
+              "RelativeToolTip": "BankDataWebService\\Migrations\\20251007010215_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T07:55:14.198Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Account.cs",
-              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\Account.cs",
-              "RelativeDocumentMoniker": "BankDataWebService\\Models\\Account.cs",
-              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\Account.cs",
-              "RelativeToolTip": "BankDataWebService\\Models\\Account.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T06:46:51.052Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Transaction.cs",
-              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\Transaction.cs",
-              "RelativeDocumentMoniker": "BankDataWebService\\Models\\Transaction.cs",
-              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankDataWebService\\Models\\Transaction.cs",
-              "RelativeToolTip": "BankDataWebService\\Models\\Transaction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-06T06:47:15.347Z"
+              "WhenOpened": "2025-10-07T01:02:15.627Z"
             }
           ]
         }

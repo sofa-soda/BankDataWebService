@@ -22,13 +22,14 @@ namespace BankDataWebService.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
-            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Password)
                 .IsUnique();
-            // needs to be run:
-            //dotnet ef migrations add AddUniqueIndexToEmail
-            //dotnet ef database update
+            modelBuilder.Entity<Account>()
+                .HasOne(a => a.User)
+                .WithMany()
+                .HasForeignKey(a => a.UserName)
+                .IsRequired();
 
             List<User> users = AddUsers(modelBuilder);
             List<Account> accounts = AddAccounts(modelBuilder, users);
@@ -39,7 +40,7 @@ namespace BankDataWebService.Data
             List<User> users = new List<User>();
             User user1 = new User()
             {
-                UserId = 1,
+                UserName = "sophia3423",
                 FirstName = "Sophia",
                 LastName = "Matassa",
                 Password = "9348230249",
@@ -49,7 +50,7 @@ namespace BankDataWebService.Data
             users.Add(user1);
             User user2 = new User()
             {
-                UserId = 2,
+                UserName = "john4534",
                 FirstName = "John",
                 LastName = "Small",
                 Password = "342345435",
@@ -66,18 +67,16 @@ namespace BankDataWebService.Data
             List<Account> accounts = new List<Account>();
             Account account1 = new Account()
             {
-                AccountNo = 1,
                 Pin = 3423,
                 AccountType = "savings",
-                UserId = 1
+                UserName = users[0].UserName
             };
             accounts.Add(account1);
             Account account2 = new Account()
             {
-                AccountNo = 2,
                 Pin = 4353,
                 AccountType = "cheque",
-                UserId = 2
+                UserName = users[1].UserName
             };
             accounts.Add(account2);
             modelBuilder.Entity<Account>().HasData(accounts);
@@ -89,18 +88,14 @@ namespace BankDataWebService.Data
             List<Transaction> transactions = new List<Transaction>();
             Transaction transaction1 = new Transaction()
             {
-                TransactionId = 1,
                 Amount = 134,
-                SendingAccountNo = 1,
-                TimeStamp = "2024-12-02 16:43:03"
+                AccountNo = 1,
             };
             transactions.Add(transaction1);
             Transaction transaction2 = new Transaction()
             {
-                TransactionId = 2,
                 Amount = 293,
-                SendingAccountNo = 2,
-                TimeStamp = "2025-01-03 18:52:17"
+                AccountNo = 2,
             };
             transactions.Add(transaction2);
             modelBuilder.Entity<Transaction>().HasData(transactions);

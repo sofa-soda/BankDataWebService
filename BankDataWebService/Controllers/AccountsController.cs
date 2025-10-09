@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BankDataWebService.Data;
+using BankDataWebService.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using BankDataWebService.Data;
-using BankDataWebService.Models;
+using Microsoft.Identity.Client;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BankDataWebService.Controllers
 {
@@ -93,6 +94,20 @@ namespace BankDataWebService.Controllers
             {
                 return NotFound();
             }
+            List<Transaction> transactions = await _context.Transactions
+                        .Where(t => t.AccountNo == account.AccountNo)
+                        .ToListAsync();
+            
+            
+            // FOR NULLING FOREIGN KEYS
+            //if (transactions.Count != 0)
+            //{
+            //    foreach (Transaction transaction in transactions)
+            //    {
+            //        transaction.Account = null;
+            //    }
+            //}
+            
 
             _context.Accounts.Remove(account);
             await _context.SaveChangesAsync();
