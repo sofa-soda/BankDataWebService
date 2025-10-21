@@ -1,19 +1,13 @@
 ﻿using BankDataWebService.Data;
 using BankDataWebService.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BankDataWebService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UsersController : Controller
     {
         private readonly DBManager _context;
 
@@ -26,7 +20,16 @@ namespace BankDataWebService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            /*List<UserDTO> usersDTO = new List<UserDTO>(users.Count());
+            for(int i = 0; i < users.Count(); i++)
+            {
+                usersDTO.Add(new UserDTO
+                {
+                    UserName = users[i].UserName,
+                });
+            }*/
+            IEnumerable<User> users = await _context.Users.ToListAsync();
+            return Ok(users);
         }
 
         // GET: api/Users/email/5

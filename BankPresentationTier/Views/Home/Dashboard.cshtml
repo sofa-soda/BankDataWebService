@@ -1,0 +1,28 @@
+@{
+    ViewBag.Title = "Dashboard";
+}
+
+@section Scripts {
+    <script>
+        const cookie = getCookie("user");
+        if (cookie != null) {
+            const user = JSON.parse(cookie);
+            const message = document.createElement('div');
+
+            const heading = document.createElement('h2');
+            heading.textContent = `Welcome to the Dashboard ${user.userName}!`;
+            message.appendChild(heading);
+
+            const paragraph = document.createElement('p');
+            paragraph.textContent = "You have successfully logged in.";
+            message.appendChild(paragraph);
+
+            document.body.appendChild(message);
+        } else {
+            const heading = document.createElement('h2');
+            heading.textContent = "Welcome to the Dashboard!";
+            message.appendChild(heading);
+            document.body.appendChild(heading);
+        }
+    </script>
+}

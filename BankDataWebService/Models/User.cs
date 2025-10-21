@@ -6,13 +6,12 @@ namespace BankDataWebService.Models
     {
         [Required, Key]
         public string UserName { get; set; } = null!;
-        public required string FirstName { get; set; }
+        public string FirstName { get; set; }
         public string? LastName { get; set; }
         [Required, EmailAddress]
-        public required string Email { get; set; }
+        public string Email { get; set; }
         [Required]
-        public required string Password { get; set; }
-        [Phone]
+        public string Password { get; set; }
         public int? PhoneNo { get; set; }
         public byte[]? ProfilePicture { get; set; }
         public string? StreetAddress { get; set; }

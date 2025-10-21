@@ -164,7 +164,7 @@
     "Parameters": [
       {
         "Name": "accountNo",
-        "Type": "System.UInt32",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

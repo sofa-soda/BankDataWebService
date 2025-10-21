@@ -29,7 +29,13 @@ namespace BankDataWebService.Data
                 .HasOne(a => a.User)
                 .WithMany()
                 .HasForeignKey(a => a.UserName)
-                .IsRequired();
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Transaction>()
+                .HasOne(a => a.Account)
+                .WithMany()
+                .HasForeignKey(a => a.AccountNo)
+                .OnDelete(DeleteBehavior.SetNull);
 
             List<User> users = AddUsers(modelBuilder);
             List<Account> accounts = AddAccounts(modelBuilder, users);
@@ -67,16 +73,18 @@ namespace BankDataWebService.Data
             List<Account> accounts = new List<Account>();
             Account account1 = new Account()
             {
+                AccountNo = 1, 
                 Pin = 3423,
                 AccountType = "savings",
-                UserName = users[0].UserName
+                UserName = users[0].UserName,
             };
             accounts.Add(account1);
             Account account2 = new Account()
             {
+                AccountNo = 2,
                 Pin = 4353,
                 AccountType = "cheque",
-                UserName = users[1].UserName
+                UserName = users[1].UserName,
             };
             accounts.Add(account2);
             modelBuilder.Entity<Account>().HasData(accounts);
@@ -88,14 +96,18 @@ namespace BankDataWebService.Data
             List<Transaction> transactions = new List<Transaction>();
             Transaction transaction1 = new Transaction()
             {
+                TransactionId = 1,
                 Amount = 134,
-                AccountNo = 1,
+                AccountNo = accounts[0].AccountNo,
+                TimeStamp = new DateTime(2025, 1, 1, 0, 0, 0)
             };
             transactions.Add(transaction1);
             Transaction transaction2 = new Transaction()
             {
+                TransactionId = 2,
                 Amount = 293,
-                AccountNo = 2,
+                AccountNo = accounts[1].AccountNo,
+                TimeStamp = new DateTime(2025, 2, 2, 0, 0, 0)
             };
             transactions.Add(transaction2);
             modelBuilder.Entity<Transaction>().HasData(transactions);

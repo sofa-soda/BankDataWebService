@@ -97,17 +97,6 @@ namespace BankDataWebService.Controllers
             List<Transaction> transactions = await _context.Transactions
                         .Where(t => t.AccountNo == account.AccountNo)
                         .ToListAsync();
-            
-            
-            // FOR NULLING FOREIGN KEYS
-            //if (transactions.Count != 0)
-            //{
-            //    foreach (Transaction transaction in transactions)
-            //    {
-            //        transaction.Account = null;
-            //    }
-            //}
-            
 
             _context.Accounts.Remove(account);
             await _context.SaveChangesAsync();

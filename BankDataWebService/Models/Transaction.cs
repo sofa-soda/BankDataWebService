@@ -6,23 +6,25 @@ namespace BankDataWebService.Models
     public class Transaction
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public uint TransactionId { get; set; }
+        public int TransactionId { get; set; }
         [Required]
         public decimal Amount { get; set; }
         [Required]
-        public uint AccountNo { get; set; }
-        [Required, DataType(DataType.Date)]
-        public DateTime TimeStamp { get; set; }
-        public uint? TargetAccountNo { get; set; } // null for withdrawals and deposits
+        public DateTime TimeStamp { get; set; } = DateTime.UtcNow;
+
         public string? Description { get; set; }
         [Required]
         public bool IsLegal { get; set; } = true;
 
-        // FOREIGN KEY STUFF
-        //[ForeignKey("AccountNo")] // can be null to allow for complete history
-        //public Account? Account { get; set; }
-        //[ForeignKey("TargetAccountNo")]
-        //public Account? TargetAccount { get; set; }
+
+        [Required]
+        public int AccountNo { get; set; }
+        [ForeignKey(nameof(AccountNo))]
+        public virtual Account? Account { get; set; }
+
+        public int? TargetAccountNo { get; set; } // null for withdrawals and deposits
+        [ForeignKey(nameof(TargetAccountNo))]
+        public virtual Account? TargetAccount { get; set; }
     }
 }
  
