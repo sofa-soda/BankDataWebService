@@ -79,6 +79,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BankBusinessTier.Controllers.AccountsController",
+    "Method": "GetForUserName",
+    "RelativePath": "api/Accounts/username/{username}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BankBusinessTier.Controllers.TransactionsController",
     "Method": "GetAll",
     "RelativePath": "api/Transactions",

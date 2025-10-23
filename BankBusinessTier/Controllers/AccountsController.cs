@@ -17,7 +17,7 @@ namespace BankBusinessTier.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAllAccounts()
         {
             RestRequest request = new RestRequest("/api/Accounts", Method.Get);
             RestResponse response = _client.Execute(request);
@@ -25,8 +25,23 @@ namespace BankBusinessTier.Controllers
             return Ok(accounts);
         }
 
+        [HttpGet("username/{username}")]
+        public IActionResult GetAccountsForUser(string username)
+        {
+            Console.WriteLine(username);
+            RestRequest request = new RestRequest("/api/Accounts", Method.Get);
+            RestResponse response = _client.Execute(request);
+            var accounts = JsonConvert.DeserializeObject<IEnumerable<AccountDTO>>(response.Content);
+            var filteredAccounts = accounts.Where(account => account.UserName == username).ToList();
+            if (filteredAccounts.Count > 0)
+            {
+                return Ok(filteredAccounts);
+            }
+            return NoContent();
+        }
+
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult GetAccount(int id)
         {
             RestRequest request = new RestRequest($"/api/Accounts/{id}", Method.Get);
             RestResponse response = _client.Execute(request);
@@ -35,7 +50,7 @@ namespace BankBusinessTier.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, AccountDTO account)
+        public IActionResult UpdateAccount(int id, AccountDTO account)
         {
             RestRequest request = new RestRequest($"/api/Accounts/{id}", Method.Put)
             {
@@ -50,7 +65,7 @@ namespace BankBusinessTier.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(AccountDTO account)
+        public IActionResult CreateAccount(AccountDTO account)
         {
             RestRequest request = new RestRequest($"/api/Accounts", Method.Post)
             {
@@ -63,7 +78,7 @@ namespace BankBusinessTier.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult DeleteAccount(int id)
         {
             RestRequest request = new RestRequest($"/api/Accounts/{id}", Method.Delete);
             RestResponse response = _client.Execute(request);

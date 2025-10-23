@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using RestSharp;
 using BankBusinessTier.Models;
+using BankDataWebService.Models;
 
 namespace BankBusinessTier.Controllers
 {
@@ -15,17 +16,22 @@ namespace BankBusinessTier.Controllers
             _client = client;
         }
 
-        [HttpGet]
-        public IActionResult GetAll()
+        private UserDTO GetUser(string username)
         {
-            RestRequest request = new RestRequest("/api/Users", Method.Get);
+            RestRequest request = new RestRequest($"/api/Users/username/{username}", Method.Get);
             RestResponse response = _client.Execute(request);
-            IEnumerable<UserDTO> users = JsonConvert.DeserializeObject<IEnumerable<UserDTO>>(response.Content);
-            return Ok(users);
+            UserDTO user = JsonConvert.DeserializeObject<UserDTO>(response.Content);
+            return user;
+        }
+
+        [HttpGet("username/{username}")]
+        public IActionResult GetUserWithUsername(string username)
+        {
+            return Ok(GetUser(username));
         }
 
         [HttpGet("email/{email}")]
-        public IActionResult GetWithEmail(string email)
+        public IActionResult GetUserWithEmail(string email)
         {
             RestRequest request = new RestRequest($"/api/Users/email/{email}", Method.Get);
             RestResponse response = _client.Execute(request);
@@ -33,17 +39,40 @@ namespace BankBusinessTier.Controllers
             return Ok(user);
         }
 
-        [HttpGet("username/{username}")]
-        public IActionResult GetWithUserName(string username)
+        [HttpGet("account/{accountno}")]
+        public IActionResult GetUserWithAccountNo(int accountNo)
         {
-            RestRequest request = new RestRequest($"/api/Users/username/{username}", Method.Get);
+            RestRequest request = new RestRequest($"/api/Accounts/{accountNo}", Method.Get);
             RestResponse response = _client.Execute(request);
-            UserDTO user = JsonConvert.DeserializeObject<UserDTO>(response.Content);
+            AccountDTO account = JsonConvert.DeserializeObject<AccountDTO>(response.Content);
+            UserDTO user = GetUser(account.UserName);
             return Ok(user);
         }
 
+        [HttpGet]
+        public IActionResult GetAllUsers()
+        {
+            RestRequest request = new RestRequest("/api/Users", Method.Get);
+            RestResponse response = _client.Execute(request);
+            IEnumerable<UserDTO> users = JsonConvert.DeserializeObject<IEnumerable<UserDTO>>(response.Content);
+            return Ok(users);
+        }
+
+        [HttpPost]
+        public IActionResult CreateUser(UserDTO user)
+        {
+            RestRequest request = new RestRequest($"/api/Users", Method.Post)
+            {
+                RequestFormat = RestSharp.DataFormat.Json,
+            };
+            request.AddJsonBody(user);
+            RestResponse response = _client.Execute(request);
+            var status = JsonConvert.DeserializeObject<UserDTO>(response.Content);
+            return Ok(status);
+        }
+
         [HttpPut("{username}")]
-        public IActionResult Put(string username, UserDTO user)
+        public IActionResult UpdateUser(string username, UserDTO user)
         {
             RestRequest request = new RestRequest($"/api/Users/{username}", Method.Put)
             {
@@ -57,21 +86,8 @@ namespace BankBusinessTier.Controllers
                 return NotFound();
         }
 
-        [HttpPost]
-        public IActionResult Post(UserDTO user)
-        {
-            RestRequest request = new RestRequest($"/api/Users", Method.Post)
-            {
-                RequestFormat = RestSharp.DataFormat.Json,
-            };
-            request.AddJsonBody(user);
-            RestResponse response = _client.Execute(request);
-            var status = JsonConvert.DeserializeObject<UserDTO>(response.Content);
-            return Ok(status);
-        }
-
         [HttpDelete("{username}")]
-        public IActionResult Delete(string username)
+        public IActionResult DeleteUser(string username)
         {
             RestRequest request = new RestRequest($"/api/Users/{username}", Method.Delete);
             RestResponse response = _client.Execute(request);
@@ -79,6 +95,44 @@ namespace BankBusinessTier.Controllers
                 return NoContent();
             else
                 return NotFound();
+        }
+
+        
+
+        [HttpPut("password/{username}")]
+        public IActionResult UpdateUserPassword(string username, string password)
+        {
+            UserDTO user = GetUser(username);
+            user.Password = password;
+
+            RestRequest request = new RestRequest($"/api/Users/{username}", Method.Put)
+            {
+                RequestFormat = RestSharp.DataFormat.Json,
+            };
+            request.AddJsonBody(user);
+            RestResponse response = _client.Execute(request);
+            if (response.IsSuccessful)
+                return NoContent();
+            else
+                return NotFound();
+        }
+
+        [HttpPost("login")]
+        public IActionResult UserLogin(UserLoginDTO userLogin)
+        {
+            if (userLogin.UserName == null || userLogin.Password == null)
+            {
+                return BadRequest("Username or password is missing");
+            }
+
+            UserDTO user = GetUser(userLogin.UserName);
+
+            if (user == null || user.Password != userLogin.Password)
+            {
+                return BadRequest("Username or password is incorrect");
+            }
+
+            return Ok(user);
         }
     }
 }

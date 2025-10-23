@@ -20,14 +20,6 @@ namespace BankDataWebService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            /*List<UserDTO> usersDTO = new List<UserDTO>(users.Count());
-            for(int i = 0; i < users.Count(); i++)
-            {
-                usersDTO.Add(new UserDTO
-                {
-                    UserName = users[i].UserName,
-                });
-            }*/
             IEnumerable<User> users = await _context.Users.ToListAsync();
             return Ok(users);
         }

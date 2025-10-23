@@ -1,0 +1,172 @@
+﻿@{
+    ViewBag.Title = "User Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<header>
+    <h1>Welcome to Your Profile</h1>
+    <button id="logoutButton">Log Out</button>
+</header>
+
+<!-- User Profile Information -->
+<section id="userProfile">
+    <h2>User Profile</h2>
+    <img id="profilePicture" src="" alt="Profile Picture" />
+    <p>Name: <span id="userName"></span></p>
+    <p>Email: <span id="userEmail"></span></p>
+    <p>Phone: <span id="userPhone"></span></p>
+    <button onclick="editProfile()">Edit Profile</button>
+</section>
+
+<!-- Account Summary -->
+<section id="accountSummary">
+    <h2>Account Summary</h2>
+    <div id="accountsList">
+        <!-- Accounts will be listed here -->
+    </div>
+    <button onclick="viewTransactionHistory()">View Transaction History</button>
+</section>
+
+<!-- Transaction History -->
+<section id="transactionHistory" style="display: none;">
+    <h2>Transaction History</h2>
+    <div id="transactionList">
+        <!-- Transactions will be listed here -->
+    </div>
+    <button onclick="goBackToSummary()">Back to Account Summary</button>
+</section>
+
+<!-- Money Transfer -->
+<section id="moneyTransfer">
+    <h2>Money Transfer</h2>
+    <form id="transferForm" onsubmit="initiateTransfer(event)">
+		<input type="text" id="recipientAccount" placeholder="Recipient Account Number" required /><a href="d:\01-dc\assignment02a\bankdatawebservice\bankpresentationtier\views\home\second.cshtml">d:\01-dc\assignment02a\bankdatawebservice\bankpresentationtier\views\home\second.cshtml</a>
+        <input type="number" id="transferAmount" placeholder="Amount" required />
+        <textarea id="transferDescription" placeholder="Description" required></textarea>
+        <button type="submit">Transfer Money</button>
+    </form>
+    <div id="transferError" style="color: red; display: none;">Invalid transfer details. Please try again.</div>
+</section>
+
+<!-- Security Features -->
+<section id="security">
+    <button onclick="logout()">Log Out</button>
+</section>
+
+@section Scripts {
+    
+    <script>
+        const cookie = getCookie("user")
+        // if (cookie == null) {
+        //     window.location.href = "/home";
+        // }
+        const user = JSON.parse(cookie);
+        console.log(user);
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDashboard();
+            loadAccountSummary();
+        });
+
+        function loadDashboard() {
+            
+            document.getElementById('userName').textContent = user.userName;
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('userPhone').textContent = user.phoneNo;
+            document.getElementById('profilePicture').src = user.profilePicture;
+        }
+
+        async function loadAccountSummary() {
+            //console.log(`https:localhost:7151/api/Accounts/username/${encodeURIComponent(user.userName)}`)
+            //const response = await fetch(`https:localhost:7151/api/Accounts/username/${encodeURIComponent(user.userName)}`);
+            // if (response.ok) {
+            //     console.log(response);
+            //     console.log("gotten this far");
+            //     const accounts = await JSON.parse(response);
+
+            //     /*const accountsList = document.getElementById('accountsList');
+            //     accounts.forEach(account => {
+            //         const accountDiv = document.createElement('div');
+            //         accountDiv.innerHTML = `
+            //         <p>Account Number: ${account.accountNumber}</p>
+            //         <p>Balance: $${account.balance}</p>
+            //         <button onclick="viewTransactionHistory('${account.accountNumber}')">View Transactions</button>
+            //     `;*/
+            //     accountsList.appendChild(accountDiv);
+            //     console.log("pretty far");
+            // });
+        }
+
+        /*async function viewTransactionHistory(accountNumber) {
+            const response = await fetch(`https://localhost:7151/api/Transactions/${encodeURIComponent(accountNumber)}`);
+            const transactions = await JSON.parse(response);
+
+            /*const transactionList = document.getElementById('transactionList');
+            transactionList.innerHTML = ''; // Clear any existing transactions
+            transactions.forEach(transaction => {
+                const transactionDiv = document.createElement('div');
+                transactionDiv.innerHTML = `
+                    <p>Date: ${transaction.date}</p>
+                    <p>Description: ${transaction.description}</p>
+                    <p>Amount: $${transaction.amount}</p>
+                `;
+                transactionList.appendChild(transactionDiv);
+            });
+
+            // Show transaction history and hide account summary
+            document.getElementById('accountSummary').style.display = 'none';
+            document.getElementById('transactionHistory').style.display = 'block';
+        }*/
+
+        // Go back to account summary
+        // function goBackToSummary() {
+        //     document.getElementById('accountSummary').style.display = 'block';
+        //     document.getElementById('transactionHistory').style.display = 'none';
+        // }
+
+        // async function initiateTransfer(event) {
+        //     event.preventDefault();
+
+        //     const recipientAccount = document.getElementById('recipientAccount').value;
+        //     const transferAmount = parseFloat(document.getElementById('transferAmount').value);
+        //     const transferDescription = document.getElementById('transferDescription').value;
+
+        //     if (!recipientAccount || isNaN(transferAmount) || transferAmount <= 0 || !transferDescription) {
+        //         document.getElementById('transferError').style.display = 'block';
+        //         return;
+        //     }
+
+        //     const transferData = { recipientAccount, transferAmount, transferDescription };
+
+        //     await fetch('https:localhost:7151/api/Transactions', {
+        //         method: 'POST',
+        //         headers: { 'Content-Type': 'application/json' },
+        //         body: JSON.stringify(transferData)
+        //     }).then(response => {
+        //         if (response.ok) {
+        //             alert('Transfer successful');
+        //         } else {
+        //             alert('Transfer failed');
+        //         }
+        //     }).catch(error => {
+        //         alert('Error: ' + error.message);
+        //     });
+
+        //     console.log('Transfer initiated:', transferData); For testing purposes
+        //     alert('Transfer initiated.');
+        // }
+
+        // function logout() {
+        //     Placeholder for logout logic (e.g., clear session, delete cookies, etc.)
+        //     console.log('Logging out...');
+        //     window.location.href = '/home';
+        // }
+
+        // Function to edit profile (example, you should link to a profile editing page)
+        // function editProfile() {
+        //     Placeholder for editing profile logic (redirect to a profile editing page or show modal)
+        //     alert('Redirecting to edit profile...');
+        //     window.location.href = '/edit-profile';
+        // }
+    </script>
+}

@@ -24,8 +24,16 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/01-DC/Assignment02A/BankDataWebService/BankPresentationTier/Views/Home/first.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxmaXJzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/01-DC/Assignment02A/BankDataWebService/BankPresentationTier/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/01-DC/Assignment02A/BankDataWebService/BankPresentationTier/Views/Home/second.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxzZWNvbmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/01-DC/Assignment02A/BankDataWebService/BankPresentationTier/Views/Shared/Error.cshtml]

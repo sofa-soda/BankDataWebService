@@ -12,7 +12,6 @@ function setCookie(cname, cvalue, exdays) {
 
 function getCookie(cname) {
     let name = cname + "=";
-    const decodedCookies = decodeURIComponent(document.cookie);
     const cookieArray = document.cookie.split(';');
     for (let i = 0; i < cookieArray.length; i++) {
         let cookie = cookieArray[i];

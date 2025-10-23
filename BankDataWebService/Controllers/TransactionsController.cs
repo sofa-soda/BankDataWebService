@@ -29,7 +29,20 @@ namespace BankDataWebService.Controllers
         }
 
         // GET: api/Transactions/4
-        [HttpGet("{accountNo}")]
+        [HttpGet("id/{id}")]
+        public async Task<ActionResult<Transaction>> GetTransaction(int id)
+        {
+            // selects all transactions that have matching accountNo and puts into a list
+            Transaction? transaction = await _context.Transactions.FindAsync(id);
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+            return Ok(transaction);
+        }
+
+        // GET: api/Transactions/4
+        [HttpGet("account/{accountNo}")]
         public async Task<ActionResult<List<Transaction>>> GetTransactionFromAccountNo(int accountNo)
         {
             // selects all transactions that have matching accountNo and puts into a list
