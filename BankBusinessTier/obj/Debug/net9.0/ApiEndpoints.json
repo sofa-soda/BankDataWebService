@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "BankBusinessTier.Controllers.AccountsController",
-    "Method": "GetAll",
+    "Method": "GetAllAccounts",
     "RelativePath": "api/Accounts",
     "HttpMethod": "GET",
     "IsController": true,
@@ -11,7 +11,7 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.AccountsController",
-    "Method": "Post",
+    "Method": "CreateAccount",
     "RelativePath": "api/Accounts",
     "HttpMethod": "POST",
     "IsController": true,
@@ -27,7 +27,7 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.AccountsController",
-    "Method": "Get",
+    "Method": "GetAccount",
     "RelativePath": "api/Accounts/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -43,7 +43,7 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.AccountsController",
-    "Method": "Put",
+    "Method": "UpdateAccount",
     "RelativePath": "api/Accounts/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -64,7 +64,7 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.AccountsController",
-    "Method": "Delete",
+    "Method": "DeleteAccount",
     "RelativePath": "api/Accounts/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -80,7 +80,7 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.AccountsController",
-    "Method": "GetForUserName",
+    "Method": "GetAccountsForUser",
     "RelativePath": "api/Accounts/username/{username}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -96,7 +96,7 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.TransactionsController",
-    "Method": "GetAll",
+    "Method": "GetAllTransactions",
     "RelativePath": "api/Transactions",
     "HttpMethod": "GET",
     "IsController": true,
@@ -106,7 +106,7 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.TransactionsController",
-    "Method": "Post",
+    "Method": "CreateTransaction",
     "RelativePath": "api/Transactions",
     "HttpMethod": "POST",
     "IsController": true,
@@ -122,8 +122,8 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.TransactionsController",
-    "Method": "Get",
-    "RelativePath": "api/Transactions/{accountNo}",
+    "Method": "GetTransactionsForAccount",
+    "RelativePath": "api/Transactions/account/{accountNo}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -137,8 +137,56 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "BankBusinessTier.Controllers.TransactionsController",
+    "Method": "GetFilteredTransactions",
+    "RelativePath": "api/Transactions/filter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "filter",
+        "Type": "BankBusinessTier.Models.Filter",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BankBusinessTier.Controllers.TransactionsController",
+    "Method": "GetTransaction",
+    "RelativePath": "api/Transactions/id/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BankBusinessTier.Controllers.TransactionsController",
+    "Method": "GetTransactionsForUser",
+    "RelativePath": "api/Transactions/user/{username}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "BankBusinessTier.Controllers.UsersController",
-    "Method": "GetAll",
+    "Method": "GetAllUsers",
     "RelativePath": "api/Users",
     "HttpMethod": "GET",
     "IsController": true,
@@ -148,7 +196,7 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.UsersController",
-    "Method": "Post",
+    "Method": "CreateUser",
     "RelativePath": "api/Users",
     "HttpMethod": "POST",
     "IsController": true,
@@ -164,7 +212,7 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.UsersController",
-    "Method": "Put",
+    "Method": "UpdateUser",
     "RelativePath": "api/Users/{username}",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -185,7 +233,7 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.UsersController",
-    "Method": "Delete",
+    "Method": "DeleteUser",
     "RelativePath": "api/Users/{username}",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -201,7 +249,23 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.UsersController",
-    "Method": "GetWithEmail",
+    "Method": "GetUserWithAccountNo",
+    "RelativePath": "api/Users/account/{accountno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "accountNo",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BankBusinessTier.Controllers.UsersController",
+    "Method": "GetUserWithEmail",
     "RelativePath": "api/Users/email/{email}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -217,7 +281,44 @@
   },
   {
     "ContainingType": "BankBusinessTier.Controllers.UsersController",
-    "Method": "GetWithUserName",
+    "Method": "UserLogin",
+    "RelativePath": "api/Users/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userLogin",
+        "Type": "BankBusinessTier.Models.UserLoginDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BankBusinessTier.Controllers.UsersController",
+    "Method": "UpdateUserPassword",
+    "RelativePath": "api/Users/password/{username}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BankBusinessTier.Controllers.UsersController",
+    "Method": "GetUserWithUsername",
     "RelativePath": "api/Users/username/{username}",
     "HttpMethod": "GET",
     "IsController": true,

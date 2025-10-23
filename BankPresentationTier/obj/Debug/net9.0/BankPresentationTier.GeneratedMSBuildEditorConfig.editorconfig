@@ -28,12 +28,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxmaXJzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/01-DC/Assignment02A/BankDataWebService/BankPresentationTier/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[D:/01-DC/Assignment02A/BankDataWebService/BankPresentationTier/Views/Home/index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxpbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/01-DC/Assignment02A/BankDataWebService/BankPresentationTier/Views/Home/second.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxzZWNvbmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/01-DC/Assignment02A/BankDataWebService/BankPresentationTier/Views/Home/third.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVx0aGlyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/01-DC/Assignment02A/BankDataWebService/BankPresentationTier/Views/Shared/Error.cshtml]

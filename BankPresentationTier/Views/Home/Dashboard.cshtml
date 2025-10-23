@@ -12,9 +12,38 @@
 <section id="userProfile">
     <h2>User Profile</h2>
     <img id="profilePicture" src="" alt="Profile Picture" />
-    <p>Name: <span id="userName"></span></p>
-    <p>Email: <span id="userEmail"></span></p>
-    <p>Phone: <span id="userPhone"></span></p>
+    <p>UserName: <span id="userName"></span></p>
+    <p>FirstName: <span id="firstName"></span></p>
+    <p>LastName: <span id="lastName"></span></p>
+    <p>Email: <span id="email"></span></p>
+    <p>Phone: <span id="phoneNo"></span></p>
+    <p>Address: <span id="streetAddress"></span>, <span id="suburb"></span> <span id="postalCode"></span> <span id="state"></span> <span id="country"></span></p>
+    <button id="editUserButton" onclick="showEditUser()">Edit Profile</button>
+</section>
+
+<!-- Edit User Profile -->
+<section id="editUserSection" style="display: none;">
+    <h2>Edit User Profile</h2>
+    <form id="userForm" onsubmit="updateUser(event)">
+        <div>
+            <input type="text" id="firstNameI" placeholder="First Name" required />
+            <input type="text" id="lastNameI" placeholder="Last Name" />
+            <input type="text" id="emailI" placeholder="Email" required />
+            <input type="text" id="passwordI" placeholder="Password" required />
+        </div>
+        <div>
+            <input type="text" id="phoneNoI" placeholder="Phone Number" />
+            <input type="text" id="streetAddressI" placeholder="Street Address" />
+            <input type="text" id="suburbI" placeholder="Suburb" />
+            <input type="text" id="stateI" placeholder="State" />
+        </div>
+        <div>
+            <input type="number" id="postalCodeI" value=0 placeholder="Postal Code" />
+            <input type="text" id="countryI" placeholder="Country" />
+            <button type="submit">Update Profile</button>
+        </div>
+    </form>
+    <button onclick="SwitchToProfile(); loadProfile()">Go Back</button>
 </section>
 
 <!-- Account Summary -->
@@ -25,9 +54,9 @@
     </div>
 </section>
 
-<!-- Transaction History -->
+<!-- Account Transaction History -->
 <section id="transactionHistory" style="display: none;">
-    <h2>Transaction History</h2>
+    <h2>Account Transaction History</h2>
     <div id="transactionList">
         <!-- Transactions will be listed here -->
     </div>
@@ -35,53 +64,159 @@
     <button onclick="goBackToSummary()">Back to Account Summary</button>
 </section>
 
-<!-- Money Transfer -->
-<section id="moneyTransfer">
-    <h2>Money Transfer</h2>
+<!-- Transactions -->
+<section id="accountTransferSection">
+    <h2>Account Transfer</h2>
     <form id="transferForm" onsubmit="initiateTransfer(event)">
-        <input type="text" id="recipientAccount" placeholder="Recipient Account Number" required />
-        <input type="number" id="transferAmount" placeholder="Amount" required />
+        <input id="accountNoTransferring" placeholder="AccountNo" required />
+        <div>
+            <input type="text" id="recipientAccount" placeholder="Recipient Account Number" required/>
+            <input type="number" id="transferAmount" placeholder="Amount" required />
+        </div>
         <textarea id="transferDescription" placeholder="Description" required></textarea>
-        <button type="submit">Transfer Money</button>
+        <button type="submit">Send</button>
     </form>
     <div id="transferError" style="color: red; display: none;">Invalid transfer details. Please try again.</div>
 </section>
 
+<section id="depositSection" style="display: none;">
+    <h2>Deposit</h2>
+    <form id="depositForm" onsubmit="initiateDeposit(event)">
+        <input id="accountNoTransferring" placeholder="AccountNo" required />
+        <div>
+            <input type="number" id="transferAmount" placeholder="Amount" required />
+        </div>
+        <textarea id="transferDescription" placeholder="Description" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+</section>
+
+<section id="withdrawalSection" style="display: none;">
+    <h2>Withdrawal</h2>
+    <form id="withdrawalForm" onsubmit="initiateWithdrawal(event)">
+        <input id="accountNoTransferring" placeholder="AccountNo" required />
+        <div>
+            <input type="number" id="transferAmount" placeholder="Amount" required />
+        </div>
+        <textarea id="transferDescription" placeholder="Description" required></textarea>
+        <button type="submit">Send</button>
+    </form>
+</section>
+<button onclick="showAccountTransfer()">Account Transfer</button>
+<button onclick="showDeposit()">Deposit</button>
+<button onclick="showWithdrawal()">Withdrawal</button>
+
+
+
 @section Scripts {
     
     <script>
+        
+
         let recentTransactions = true;
         let AccountNumber = 0;
+        let user;
+        
 
-        const cookie = getCookie("user")
-        if (cookie == null) {
-            window.location.href = "/home";
-        }
-        const user = JSON.parse(cookie);
-        console.log(user);
-        document.addEventListener('DOMContentLoaded', function() {
-            loadDashboard();
-            loadAccountSummary();
+        document.addEventListener('DOMContentLoaded', async function() {
+            const cookie = getCookie("user")
+            cookie == null && (window.location.href = "/home");
+            const cookieUser = JSON.parse(cookie);
+            user = await getUser(cookieUser.userName);
+            console.log(user);
+            loadProfile();
+            loadAccountSummary()
         });
 
-        function loadDashboard() {
+        async function getUser(username) {
+            const response = await fetch(`https://localhost:7151/api/Users/username/${encodeURIComponent(username)}`);
+            if (response.ok) {
+                user = await response.json();
+                return user;
+            } else {
+                window.location.href = "/home";
+            }
+
+        }
+
+        function loadProfile() {
             document.getElementById('userName').textContent = user.userName;
-            document.getElementById('userEmail').textContent = user.email;
-            document.getElementById('userPhone').textContent = user.phoneNo;
-            if (user.profilePicture != null) {
-                document.getElementById('profilePicture').src = user.profilePicture;
-            } 
+            document.getElementById('firstName').textContent = user.firstName;
+            document.getElementById('email').textContent = user.email;
+
+            user.profilePicture != null && (document.getElementById('profilePicture').src = user.profilePicture);
+            user.lastName != null && (document.getElementById('lastName').textContent = user.lastName);
+            user.phoneNo != null && (document.getElementById('phoneNo').textContent = user.phoneNo);
+            user.streetAddress != null && user.streetAddress != "" && (document.getElementById('streetAddress').textContent = user.streetAddress);
+            user.suburb != null && user.suburb != "" && (document.getElementById('suburb').textContent = user.suburb);
+            user.state != null && user.state != "" && (document.getElementById('state').textContent = user.state);
+            user.postalCode != null && user.postalCode != "" && (document.getElementById('postalCode').textContent = user.postalCode);
+            user.country != null && user.country != "" && (document.getElementById('country').textContent = user.country);
+        }
+
+        function showEditUser() {
+            $('#firstNameI').val(user.firstName);
+            $('#lastNameI').val(user.lastName);
+            $('#emailI').val(user.email);
+            $('#passwordI').val(user.password);
+            $('#phoneNoI').val(user.phoneNo);
+            $('#streetAddressI').val(user.streetAddress);
+            $('#suburbI').val(user.suburb);
+            $('#stateI').val(user.state);
+            $('#postalCodeI').val(user.postalCode);
+            $('#countryI').val(user.country);
+
+            document.getElementById('userProfile').style.display = 'none';
+            document.getElementById('editUserSection').style.display = 'block';
+        }
+
+        function SwitchToProfile() {
+            document.getElementById('userProfile').style.display = 'block';
+            document.getElementById('editUserSection').style.display = 'none';
+        }
+
+        async function updateUser() {
+            event.preventDefault()
+            user.firstName = $('#firstNameI').val();
+            user.lastName = $('#lastNameI').val();
+            user.email = $('#emailI').val();
+            user.password = $('#passwordI').val();
+            user.phoneNo = $('#phoneNoI').val();
+            user.streetAddress = $('#streetAddressI').val();
+            user.suburb = $('#suburbI').val();
+            user.state = $('#stateI').val();
+            user.postalCode = ($('#postalCodeI').val() == "") ? null : $('#postalCodeI').val();
+            user.country = $('#countryI').val();
+
+
+            console.log(user);
+            try {
+                console.log(`https://localhost:7151/api/Users/${user.userName}`);
+                const response = await fetch(`https://localhost:7151/api/Users/${user.userName}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(user)
+                });
+
+                if (response.ok) {
+                    alert('User update was successful');
+                } else {
+                    alert('User update failed');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
         }
 
         async function loadAccountSummary() {
             console.log(`https://localhost:7151/api/Accounts/username/${encodeURIComponent(user.userName)}`)
             const response = await fetch(`https://localhost:7151/api/Accounts/username/${encodeURIComponent(user.userName)}`);
-            if (response.ok) 
+            if (response.ok)
             {
                 const accounts = await response.json();
                 console.log(accounts);
                 const accountsList = document.getElementById('accountsList');
-                
+
                 accounts.forEach(account => {
                     const accountDiv = document.createElement('div');
                     accountDiv.innerHTML = `
@@ -96,7 +231,7 @@
                 console.log('response didnt work');
             }
         }
-        
+
         async function changeFilter() {
             const toggleBtn = document.getElementById('recentBtn');
             if (recentTransactions) {
@@ -106,7 +241,7 @@
                 recentTransactions = true;
                 toggleBtn.textContent = 'Recent'
             }
-            const response = await fetch(`https://localhost:7151/api/Transactions/${encodeURIComponent(AccountNumber)}`);
+            const response = await fetch(`https://localhost:7151/api/Transactions/account/${encodeURIComponent(AccountNumber)}`);
             const transactions = await response.json();
 
             const filteredTransactions = filterTransactionsByDate(transactions);
@@ -136,7 +271,7 @@
         async function viewTransactionHistory(accountNumber) {
             AccountNumber = accountNumber;
             console.log(`https://localhost:7151/api/Transactions/${encodeURIComponent(accountNumber)}`);
-            const response = await fetch(`https://localhost:7151/api/Transactions/${encodeURIComponent(accountNumber)}`);
+            const response = await fetch(`https://localhost:7151/api/Transactions/account/${encodeURIComponent(accountNumber)}`);
             const transactions = await response.json();
 
             const filteredTransactions = filterTransactionsByDate(transactions);
@@ -161,19 +296,48 @@
              document.getElementById('transactionHistory').style.display = 'none';
         }
 
+        function showAccountTransfer() {
+            document.getElementById('accountTransferSection').style.display = 'block';
+            document.getElementById('depositSection').style.display = 'none';
+            document.getElementById('withdrawalSection').style.display = 'none';
+        }
+
+        function showDeposit() {
+            document.getElementById('accountTransferSection').style.display = 'none';
+            document.getElementById('depositSection').style.display = 'block';
+            document.getElementById('withdrawalSection').style.display = 'none';
+        }
+
+        function showWithdrawal() {
+            document.getElementById('accountTransferSection').style.display = 'none';
+            document.getElementById('depositSection').style.display = 'none';
+            document.getElementById('withdrawalSection').style.display = 'block';
+        }
+
         async function initiateTransfer(event) {
             event.preventDefault();
 
-            const recipientAccount = document.getElementById('recipientAccount').value;
-            const transferAmount = parseFloat(document.getElementById('transferAmount').value);
-            const transferDescription = document.getElementById('transferDescription').value;
+            const recipientAccount = $('#recipientAccount').val();
+            const transferAmount = parseFloat($('#transferAmount').val());
+            const transferDescription = $('#transferDescription').val();
+            const accountNoTransferring = $('#accountNoTransferring').val();
 
-            if (!recipientAccount || isNaN(transferAmount) || transferAmount <= 0 || !transferDescription) {
+            if (isNaN(transferAmount) || transferAmount <= 0) {
                 document.getElementById('transferError').style.display = 'block';
                 return;
             }
 
-            const transferData = { recipientAccount, transferAmount, transferDescription };
+            // NEED TO CHECK RECIPIENT ACCOUNT
+            // foreign key constraint failing, need to embed users in business layer
+
+            const transferData = {
+                "amount": transferAmount,
+                "description": transferDescription,
+                "accountNo": accountNoTransferring,
+                "targetAccountNo": recipientAccount
+            }
+
+            
 
             await fetch('https://localhost:7151/api/Transactions', {
                 method: 'POST',
@@ -184,13 +348,20 @@
                     alert('Transfer successful');
                 } else {
                     alert('Transfer failed');
-                } 
+                }
             }).catch(error => {
                 alert('Error: ' + error.message);
             });
+            loadAccountSummary()
+        }
 
-            console.log('Transfer initiated:', transferData);
-            alert('Transfer initiated.');
+        function initiateDeposit(event) {
+            event.preventDefault();
+
+        }
+
+        function initiateWithdrawal(event) {
+            event.preventDefault();
         }
 
     </script>
