@@ -3,20 +3,36 @@
   "WorkspaceRootPath": "D:\\01-DC\\Assignment02A\\BankDataWebService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankpresentationtier\\views\\home\\fourth.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|solutionrelative:bankpresentationtier\\views\\home\\fourth.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankpresentationtier\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|solutionrelative:bankpresentationtier\\views\\home\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0C68D65A-4117-4F0D-ACE1-3DACE870B9C1}|BankBusinessTier\\BankBusinessTier.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankbusinesstier\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0C68D65A-4117-4F0D-ACE1-3DACE870B9C1}|BankBusinessTier\\BankBusinessTier.csproj|solutionrelative:bankbusinesstier\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankpresentationtier\\views\\home\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|solutionrelative:bankpresentationtier\\views\\home\\admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankpresentationtier\\views\\home\\admindashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|solutionrelative:bankpresentationtier\\views\\home\\admindashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankpresentationtier\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|solutionrelative:bankpresentationtier\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankpresentationtier\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|solutionrelative:bankpresentationtier\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankpresentationtier\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|solutionrelative:bankpresentationtier\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankpresentationtier\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F7B25BB6-EE55-4A2C-9C7E-59331C3B9D94}|BankPresentationTier\\BankPresentationTier.csproj|solutionrelative:bankpresentationtier\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0C68D65A-4117-4F0D-ACE1-3DACE870B9C1}|BankBusinessTier\\BankBusinessTier.csproj|d:\\01-dc\\assignment02a\\bankdatawebservice\\bankbusinesstier\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0C68D65A-4117-4F0D-ACE1-3DACE870B9C1}|BankBusinessTier\\BankBusinessTier.csproj|solutionrelative:bankbusinesstier\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,11 +42,93 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "site.js",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "BankPresentationTier\\wwwroot\\js\\site.js",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "BankPresentationTier\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-10-24T14:35:30.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminDashboard.cshtml",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Views\\Home\\AdminDashboard.cshtml",
+              "RelativeDocumentMoniker": "BankPresentationTier\\Views\\Home\\AdminDashboard.cshtml",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Views\\Home\\AdminDashboard.cshtml",
+              "RelativeToolTip": "BankPresentationTier\\Views\\Home\\AdminDashboard.cshtml",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAAwGUAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T11:44:32.61Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "BankPresentationTier\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "BankPresentationTier\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T11:33:43.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Program.cs",
+              "RelativeDocumentMoniker": "BankPresentationTier\\Program.cs",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Program.cs",
+              "RelativeToolTip": "BankPresentationTier\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T11:30:12.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "admin.cshtml",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Views\\Home\\admin.cshtml",
+              "RelativeDocumentMoniker": "BankPresentationTier\\Views\\Home\\admin.cshtml",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Views\\Home\\admin.cshtml",
+              "RelativeToolTip": "BankPresentationTier\\Views\\Home\\admin.cshtml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-24T11:19:36.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankBusinessTier\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "BankBusinessTier\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankBusinessTier\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "BankBusinessTier\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-24T11:18:47.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "index.cshtml",
               "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Views\\Home\\index.cshtml",
               "RelativeDocumentMoniker": "BankPresentationTier\\Views\\Home\\index.cshtml",
@@ -42,52 +140,16 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Dashboard.cshtml",
               "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Views\\Home\\Dashboard.cshtml",
               "RelativeDocumentMoniker": "BankPresentationTier\\Views\\Home\\Dashboard.cshtml",
               "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Views\\Home\\Dashboard.cshtml",
               "RelativeToolTip": "BankPresentationTier\\Views\\Home\\Dashboard.cshtml",
-              "ViewState": "AgIAAGYBAAAAAAAAAAAQwIwBAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-10-24T06:46:33.762Z",
-              "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankBusinessTier\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "BankBusinessTier\\Controllers\\UsersController.cs",
-              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankBusinessTier\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "BankBusinessTier\\Controllers\\UsersController.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAAwIYAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-24T06:49:17.538Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "fourth.cshtml",
-              "DocumentMoniker": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Views\\Home\\fourth.cshtml",
-              "RelativeDocumentMoniker": "BankPresentationTier\\Views\\Home\\fourth.cshtml",
-              "ToolTip": "D:\\01-DC\\Assignment02A\\BankDataWebService\\BankPresentationTier\\Views\\Home\\fourth.cshtml",
-              "RelativeToolTip": "BankPresentationTier\\Views\\Home\\fourth.cshtml",
-              "ViewState": "AgIAAEQBAAAAAAAAAAAAAGgBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-24T07:08:23.956Z",
               "EditorCaption": ""
             }
           ]

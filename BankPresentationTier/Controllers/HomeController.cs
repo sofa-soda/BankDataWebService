@@ -13,8 +13,19 @@ namespace BankPresentationTier.Controllers
             return PartialView();
         }
 
+        public IActionResult Admin()
+        {
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Dashboard()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult AdminDashboard()
         {
             return View();
         }
