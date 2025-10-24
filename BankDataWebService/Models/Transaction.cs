@@ -13,8 +13,6 @@ namespace BankDataWebService.Models
         public DateTime TimeStamp { get; set; } = DateTime.UtcNow;
 
         public string? Description { get; set; }
-        [Required]
-        public bool IsLegal { get; set; } = true;
 
 
         [Required]

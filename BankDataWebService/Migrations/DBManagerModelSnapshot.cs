@@ -42,24 +42,6 @@ namespace BankDataWebService.Migrations
                     b.HasIndex("UserName");
 
                     b.ToTable("Accounts");
-
-                    b.HasData(
-                        new
-                        {
-                            AccountNo = 1,
-                            AccountType = "savings",
-                            Balance = 0m,
-                            Pin = 3423,
-                            UserName = "sophia3423"
-                        },
-                        new
-                        {
-                            AccountNo = 2,
-                            AccountType = "cheque",
-                            Balance = 0m,
-                            Pin = 4353,
-                            UserName = "john4534"
-                        });
                 });
 
             modelBuilder.Entity("BankDataWebService.Models.Transaction", b =>
@@ -77,9 +59,6 @@ namespace BankDataWebService.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsLegal")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int?>("TargetAccountNo")
                         .HasColumnType("INTEGER");
 
@@ -93,24 +72,6 @@ namespace BankDataWebService.Migrations
                     b.HasIndex("TargetAccountNo");
 
                     b.ToTable("Transactions");
-
-                    b.HasData(
-                        new
-                        {
-                            TransactionId = 1,
-                            AccountNo = 1,
-                            Amount = 134m,
-                            IsLegal = true,
-                            TimeStamp = new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            TransactionId = 2,
-                            AccountNo = 2,
-                            Amount = 293m,
-                            IsLegal = true,
-                            TimeStamp = new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
-                        });
                 });
 
             modelBuilder.Entity("BankDataWebService.Models.User", b =>
@@ -136,8 +97,8 @@ namespace BankDataWebService.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("PhoneNo")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("PhoneNo")
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("PostalCode")
                         .HasColumnType("INTEGER");
@@ -163,26 +124,6 @@ namespace BankDataWebService.Migrations
                         .IsUnique();
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            UserName = "sophia3423",
-                            Email = "sophia3423@gmail.com",
-                            FirstName = "Sophia",
-                            LastName = "Matassa",
-                            Password = "9348230249",
-                            PhoneNo = 423434332
-                        },
-                        new
-                        {
-                            UserName = "john4534",
-                            Email = "john4534@gmail.com",
-                            FirstName = "John",
-                            LastName = "Small",
-                            Password = "342345435",
-                            PhoneNo = 458392394
-                        });
                 });
 
             modelBuilder.Entity("BankDataWebService.Models.Account", b =>

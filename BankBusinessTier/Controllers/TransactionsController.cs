@@ -95,8 +95,33 @@ namespace BankBusinessTier.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateTransaction(TransactionDTO transaction)
+        public IActionResult CreateTransaction(TransactionUserDTO userTransaction)
         {
+            
+            // check that the account is actually the users'
+            RestRequest userRequest = new RestRequest("/api/Accounts", Method.Get);
+            RestResponse userResponse = _client.Execute(userRequest);
+            var accounts = JsonConvert.DeserializeObject<IEnumerable<AccountDTO>>(userResponse.Content);
+            if (accounts == null)
+            {
+                return BadRequest("No accounts under the given username");
+            }
+            var filteredAccounts = accounts.Where(account => account.UserName == userTransaction.UserName).ToList();
+
+            if (filteredAccounts.Find(account => account.AccountNo == userTransaction.AccountNo) == null)
+            {
+                return BadRequest("Hmmm okk");
+            }
+
+            // using the transaction object passed over, create transaction object for sending to data server
+            TransactionDTO transaction = new TransactionDTO
+            {
+                AccountNo = userTransaction.AccountNo,
+                Amount = userTransaction.Amount,
+                TargetAccountNo = userTransaction.TargetAccountNo,
+                Description = userTransaction.Description,
+            };
+
             RestRequest request = new RestRequest($"/api/Transactions", Method.Post)
             {
                 RequestFormat = RestSharp.DataFormat.Json,
@@ -104,7 +129,7 @@ namespace BankBusinessTier.Controllers
             request.AddJsonBody(transaction);
             RestResponse response = _client.Execute(request);
             if (!response.IsSuccessful)
-                return BadRequest("Something went wrong");
+                return BadRequest(response.ErrorMessage);
 
             TransactionDTO newTransaction = JsonConvert.DeserializeObject<TransactionDTO>(response.Content);
             return Ok(newTransaction);

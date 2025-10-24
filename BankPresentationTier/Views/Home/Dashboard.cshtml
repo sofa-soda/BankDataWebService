@@ -68,12 +68,12 @@
 <section id="accountTransferSection">
     <h2>Account Transfer</h2>
     <form id="transferForm" onsubmit="initiateTransfer(event)">
-        <input id="accountNoTransferring" placeholder="AccountNo" required />
+        <input id="accountNoTransferringT" placeholder="AccountNo" required />
         <div>
-            <input type="text" id="recipientAccount" placeholder="Recipient Account Number" required/>
-            <input type="number" id="transferAmount" placeholder="Amount" required />
+            <input type="text" id="recipientAccountT" placeholder="Recipient Account Number" required/>
+            <input type="number" id="transferAmountT" placeholder="Amount" required />
         </div>
-        <textarea id="transferDescription" placeholder="Description" required></textarea>
+        <textarea id="transferDescriptionT" placeholder="Description" required></textarea>
         <button type="submit">Send</button>
     </form>
     <div id="transferError" style="color: red; display: none;">Invalid transfer details. Please try again.</div>
@@ -82,11 +82,11 @@
 <section id="depositSection" style="display: none;">
     <h2>Deposit</h2>
     <form id="depositForm" onsubmit="initiateDeposit(event)">
-        <input id="accountNoTransferring" placeholder="AccountNo" required />
+        <input id="accountNoTransferringD" placeholder="AccountNo" required />
         <div>
-            <input type="number" id="transferAmount" placeholder="Amount" required />
+            <input type="number" id="transferAmountD" placeholder="Amount" required />
         </div>
-        <textarea id="transferDescription" placeholder="Description" required></textarea>
+        <textarea id="transferDescriptionD" placeholder="Description" required></textarea>
         <button type="submit">Send</button>
     </form>
 </section>
@@ -94,11 +94,11 @@
 <section id="withdrawalSection" style="display: none;">
     <h2>Withdrawal</h2>
     <form id="withdrawalForm" onsubmit="initiateWithdrawal(event)">
-        <input id="accountNoTransferring" placeholder="AccountNo" required />
+        <input id="accountNoTransferringW" placeholder="AccountNo" required />
         <div>
-            <input type="number" id="transferAmount" placeholder="Amount" required />
+            <input type="number" id="transferAmountW" placeholder="Amount" required />
         </div>
-        <textarea id="transferDescription" placeholder="Description" required></textarea>
+        <textarea id="transferDescriptionW" placeholder="Description" required></textarea>
         <button type="submit">Send</button>
     </form>
 </section>
@@ -120,12 +120,14 @@
 
         document.addEventListener('DOMContentLoaded', async function() {
             const cookie = getCookie("user")
+            console.log(cookie);
             cookie == null && (window.location.href = "/home");
-            const cookieUser = JSON.parse(cookie);
-            user = await getUser(cookieUser.userName);
+
+            const username = cookie;
+            user = await getUser(username);
             console.log(user);
             loadProfile();
-            loadAccountSummary()
+            loadAccountSummary();
         });
 
         async function getUser(username) {
@@ -315,53 +317,110 @@
         }
 
         async function initiateTransfer(event) {
-            event.preventDefault();
+            const recipientAccount = $('#recipientAccountT').val();
+            const transferAmount = parseFloat($('#transferAmountT').val());
+            const transferDescription = $('#transferDescriptionT').val();
+            const accountNoTransferring = $('#accountNoTransferringT').val();
 
-            const recipientAccount = $('#recipientAccount').val();
-            const transferAmount = parseFloat($('#transferAmount').val());
-            const transferDescription = $('#transferDescription').val();
-            const accountNoTransferring = $('#accountNoTransferring').val();
-
-            if (isNaN(transferAmount) || transferAmount <= 0) {
+            if (isNaN(transferAmount) || transferAmount <= 0 || recipientAccount == accountNoTransferring) {
                 document.getElementById('transferError').style.display = 'block';
                 return;
             }
 
-            // NEED TO CHECK RECIPIENT ACCOUNT
-            // foreign key constraint failing, need to embed users in business layer
-
             const transferData = {
+                "userName": user.userName,
                 "amount": transferAmount,
                 "description": transferDescription,
                 "accountNo": accountNoTransferring,
                 "targetAccountNo": recipientAccount
             }
 
-            
+            console.log(transferData);
 
-            await fetch('https://localhost:7151/api/Transactions', {
+
+            await fetch(`https://localhost:7151/api/Transactions`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(transferData)
             }).then(response => {
                 if (response.ok) {
                     alert('Transfer successful');
-                } else {
-                    alert('Transfer failed');
                 }
             }).catch(error => {
                 alert('Error: ' + error.message);
             });
-            loadAccountSummary()
         }
 
-        function initiateDeposit(event) {
+        async function initiateDeposit(event) {
             event.preventDefault();
+
+            const transferAmount = parseFloat($('#transferAmountD').val());
+            const transferDescription = $('#transferDescriptionD').val();
+            const accountNoTransferring = $('#accountNoTransferringD').val();
+
+            if (isNaN(transferAmount) || transferAmount <= 0 ) {
+                document.getElementById('transferError').style.display = 'block';
+                return;
+            }
+
+            const transferData = {
+                "userName": user.userName,
+                "amount": transferAmount,
+                "description": transferDescription,
+                "accountNo": accountNoTransferring
+            }
+
+            console.log(transferData);
+
+
+            await fetch(`https://localhost:7151/api/Transactions`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(transferData)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Transfer successful');
+                }
+            }).catch(error => {
+                alert('Error: ' + error.message);
+            });
 
         }
 
-        function initiateWithdrawal(event) {
+        async function initiateWithdrawal(event) {
             event.preventDefault();
+
+            let transferAmount = parseFloat($('#transferAmountW').val());
+            const transferDescription = $('#transferDescriptionW').val();
+            const accountNoTransferring = $('#accountNoTransferringW').val();
+
+            if (isNaN(transferAmount) || transferAmount <= 0 ) {
+                document.getElementById('transferError').style.display = 'block';
+                return;
+            }
+            transferAmount = transferAmount * -1;
+
+            const transferData = {
+                "userName": user.userName,
+                "amount": transferAmount,
+                "description": transferDescription,
+                "accountNo": accountNoTransferring
+            }
+
+            console.log(transferData);
+
+
+            await fetch(`https://localhost:7151/api/Transactions`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(transferData)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Transfer successful');
+                }
+            }).catch(error => {
+                alert('Error: ' + error.message);
+            });
         }
 
     </script>

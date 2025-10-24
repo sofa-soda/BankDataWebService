@@ -113,8 +113,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "transaction",
-        "Type": "BankBusinessTier.Models.TransactionDTO",
+        "Name": "userTransaction",
+        "Type": "BankBusinessTier.Models.TransactionUserDTO",
         "IsRequired": true
       }
     ],

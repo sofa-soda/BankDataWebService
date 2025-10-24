@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace BankDataWebService.Migrations
 {
     /// <inheritdoc />
@@ -22,7 +20,7 @@ namespace BankDataWebService.Migrations
                     LastName = table.Column<string>(type: "TEXT", nullable: true),
                     Email = table.Column<string>(type: "TEXT", nullable: false),
                     Password = table.Column<string>(type: "TEXT", nullable: false),
-                    PhoneNo = table.Column<int>(type: "INTEGER", nullable: true),
+                    PhoneNo = table.Column<string>(type: "TEXT", nullable: true),
                     ProfilePicture = table.Column<byte[]>(type: "BLOB", nullable: true),
                     StreetAddress = table.Column<string>(type: "TEXT", nullable: true),
                     Suburb = table.Column<string>(type: "TEXT", nullable: true),
@@ -66,7 +64,6 @@ namespace BankDataWebService.Migrations
                     Amount = table.Column<decimal>(type: "TEXT", nullable: false),
                     TimeStamp = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Description = table.Column<string>(type: "TEXT", nullable: true),
-                    IsLegal = table.Column<bool>(type: "INTEGER", nullable: false),
                     AccountNo = table.Column<int>(type: "INTEGER", nullable: false),
                     TargetAccountNo = table.Column<int>(type: "INTEGER", nullable: true)
                 },
@@ -84,33 +81,6 @@ namespace BankDataWebService.Migrations
                         column: x => x.TargetAccountNo,
                         principalTable: "Accounts",
                         principalColumn: "AccountNo");
-                });
-
-            migrationBuilder.InsertData(
-                table: "Users",
-                columns: new[] { "UserName", "Country", "Email", "FirstName", "LastName", "Password", "PhoneNo", "PostalCode", "ProfilePicture", "State", "StreetAddress", "Suburb" },
-                values: new object[,]
-                {
-                    { "john4534", null, "john4534@gmail.com", "John", "Small", "342345435", 458392394, null, null, null, null, null },
-                    { "sophia3423", null, "sophia3423@gmail.com", "Sophia", "Matassa", "9348230249", 423434332, null, null, null, null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Accounts",
-                columns: new[] { "AccountNo", "AccountType", "Balance", "Pin", "UserName" },
-                values: new object[,]
-                {
-                    { 1, "savings", 0m, 3423, "sophia3423" },
-                    { 2, "cheque", 0m, 4353, "john4534" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Transactions",
-                columns: new[] { "TransactionId", "AccountNo", "Amount", "Description", "IsLegal", "TargetAccountNo", "TimeStamp" },
-                values: new object[,]
-                {
-                    { 1, 1, 134m, null, true, null, new DateTime(2025, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, 2, 293m, null, true, null, new DateTime(2025, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.CreateIndex(

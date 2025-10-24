@@ -12,7 +12,7 @@ namespace BankDataWebService.Models
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
-        public int? PhoneNo { get; set; }
+        public string? PhoneNo { get; set; }
         public byte[]? ProfilePicture { get; set; }
         public string? StreetAddress { get; set; }
         public string? Suburb { get; set; }

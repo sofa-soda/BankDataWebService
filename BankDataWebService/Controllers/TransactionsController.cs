@@ -62,55 +62,50 @@ namespace BankDataWebService.Controllers
         [HttpPost]
         public async Task<ActionResult<Transaction>> PostTransaction(Transaction transaction)
         {
-            try
+            // retrieve account
+            Account? account = await _context.Accounts
+                    .FirstOrDefaultAsync(a => a.AccountNo == transaction.AccountNo)
+                    ?? throw new Exception("account does't exist");
+
+            transaction.Account = account;
+
+            if (transaction.TargetAccountNo != null)
             {
-                // retrieve account
-                Account? account = await _context.Accounts
-                        .FirstOrDefaultAsync(a => a.AccountNo == transaction.AccountNo)
-                        ?? throw new Exception("account does't exist");
+                if (transaction.Amount <= 0)
+                    return BadRequest("Transfer amount must be positive");
 
-                if (transaction.TargetAccountNo != null)
-                {
-                    if (transaction.Amount <= 0)
-                        throw new Exception("Transfer amount must be positive");
+                // retrieve target account
+                Account? targetAccount = await _context.Accounts.FirstOrDefaultAsync(a => a.AccountNo == transaction.TargetAccountNo);
+                if (targetAccount == null)
+                    return BadRequest("Target account does't exist");
 
-                    // retrieve target account
-                    Account? targetAccount = await _context.Accounts
-                        .FirstOrDefaultAsync(a => a.AccountNo == transaction.TargetAccountNo)
-                        ?? throw new Exception("Target account does't exist");
+                if (account.Balance < transaction.Amount)
+                    return BadRequest("Insufficient funds");
 
-                    if (account.Balance < transaction.Amount)
-                        throw new Exception("Insufficient funds");
+                // transfer
+                transaction.TargetAccount = targetAccount;
 
-                    // transfer
-                    account.Balance -= transaction.Amount;
-                    targetAccount.Balance += transaction.Amount;
-                }
-                else if (transaction.TargetAccountNo == null)
-                {
-                    if (transaction.Amount >= 0) // deposit
-                    {
-                        account.Balance += transaction.Amount;
-                    }
-                    else if (transaction.Amount < 0) // withdrawal
-                    {
-                        if (account.Balance < Math.Abs(transaction.Amount))
-                            throw new Exception("Insufficient funds");
-
-                        account.Balance += transaction.Amount;
-                    }
-                }
-                _context.Transactions.Add(transaction);
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("GetTransaction", new { id = transaction.TransactionId }, transaction);
+                account.Balance -= transaction.Amount;
+                targetAccount.Balance += transaction.Amount;
             }
-            catch (Exception ex)
+            else if (transaction.TargetAccountNo == null)
             {
-                transaction.IsLegal = false;
-                _context.Transactions.Add(transaction);
-                await _context.SaveChangesAsync();
-                return CreatedAtAction("GetTransaction", new { id = transaction.TransactionId }, transaction);
+                if (transaction.Amount >= 0) // deposit
+                {
+                    account.Balance += transaction.Amount;
+                }
+                else if (transaction.Amount < 0) // withdrawal
+                {
+                    if (account.Balance < Math.Abs(transaction.Amount))
+                        return BadRequest("Insufficient funds");
+
+                    account.Balance += transaction.Amount;
+                }
             }
+
+            _context.Transactions.Add(transaction);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction("GetTransaction", new { id = transaction.TransactionId }, transaction);
         }
     }
 }
